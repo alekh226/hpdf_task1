@@ -33,10 +33,14 @@ app.get('/getcookies',function(request,response){
 });
 
 app.get('/setcookie',function(request,response){
+	if(request.cookies.cookieName==null){
 	 var randomNumber=Math.random().toString();
     randomNumber=randomNumber.substring(2,randomNumber.length);
     response.cookie('cookieName',randomNumber, { maxAge: 900000, httpOnly: true });
-	response.send("cookie is set");
+	response.send("cookie is set");}
+	else {
+		response.send("cookie is already set");
+	}
 
 	
 });
